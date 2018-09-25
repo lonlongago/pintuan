@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>pintuan</title>
+     <!-- <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=f9b1ac7db140513a3ba6cf056c51141a"></script>  -->
+     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=<{$AMAP_WEB_KEY}>"></script> 
+     <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+     <script type=text/javascript>
+        <{if $request.IN_WEIXIN}>
+            window.WXJS_CFG = {
+                debug: false,
+                appId: '<{$wxjs_config["appId"]}>',
+                timestamp: '<{$wxjs_config["timestamp"]}>',
+                nonceStr: '<{$wxjs_config["nonceStr"]}>',
+                signature: '<{$wxjs_config["signature"]}>',
+                jsApiList: ['checkJsAPi','getLocation','onMenuShareAppMessage','onMenuShareTimeline','onMenuShareQQ','onMenuShareQZone','onMenuShareWeibo']
+            };
+            wx.config(WXJS_CFG);
+        <{/if}>
+        window.__CFG = {
+            'APIURL' : "<{$CONFIG.site.siteurl}>/api.php",
+            'SITEURL' : "<{$CONFIG.site.siteurl}>",
+            'CLIENT_OS':"VUEAPP",
+            "WX_OPENID":"<{$WX_OPENID}>",
+            "TOKEN":"<{$TOKEN}>",
+            "UxLocation":{"lng":"","lat":""},
+            "CITY_ID":"<{$request.city_id}>",
+            "CITY":"<{$request.city.city_name}>",
+            "C_PREFIX":"KT-",
+            "HOME_URL":"<{link ctl='/' http='www'}>",
+            "Request_In_App":"<{$request.IN_APP_CLIENT}>",
+            "fenxiang":"<{$share}>",
+            "IMG_URL":"",
+            "SITE_TITLE":"<{$CONFIG.site.title}>",
+            
+            "GDKEY":"<{$AMAP_WEB_KEY}>"
+        };
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
